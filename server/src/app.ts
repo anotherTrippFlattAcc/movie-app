@@ -1,0 +1,21 @@
+import express from 'express'
+import { MovieRepository } from './modules/movies/movie.repository'
+import { env } from './config/env'
+import { MovieService } from './modules/movies/movie.service'
+import { MovieController } from './modules/movies/movie.controller'
+import { createMovieRouter } from './modules/movies/movie.routes'
+
+export const app = express()
+
+app.use(express.json())
+
+const movieRepository = new MovieRepository({
+	url: env.moviesApiUrl,
+	apiKey: env.moviesApiKey,
+	timeoutMs: env.moviesApiTimeoutMs,
+})
+
+const movieService = new MovieService(movieRepository)
+const movieController = new MovieController(movieService)
+
+app.use('/api/movies', createMovieRouter(movieController))

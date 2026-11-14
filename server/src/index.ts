@@ -1,17 +1,8 @@
-import express from 'express'
-import moviesRouter from './routers/movie'
+import 'dotenv/config'
+import { app } from './app'
 
-const app = express()
-const PORT = 3001
+const port = Number(process.env.PORT ?? 3000)
 
-app.use(express.json())
-
-app.get('/api/health', (_req, res) => {
-	res.json({ status: 'ok' })
-})
-
-app.use('/api/movies', moviesRouter)
-
-app.listen(PORT, () => {
-	console.log(`API запущен: http://localhost:${PORT}`)
+app.listen(port, () => {
+	console.log(`Server started on port ${port}`)
 })
