@@ -1,18 +1,17 @@
-import { MovieCard } from './components/blocks/movie/card'
-import { MovieHero } from './components/blocks/movie/hero'
-import { MoviesPagination } from './components/blocks/movie/pagination'
-import { movie } from './services/movie'
-import type { Movie } from './types/movie'
+import { MOVIES_SERVICE } from '@/services/movie'
+import type { Movie } from '@/types/movie'
 import { useEffect, useState } from 'react'
+import { MovieCard } from '@/components/blocks/movie/card'
+import { MoviesPagination } from '@/components/blocks/movie/pagination'
 
-function App() {
+export function HomePage() {
 	const [movies, setMovies] = useState<Movie[]>([])
 	const [currentPage, setCurrentPage] = useState<number>(1)
 	const [totalPages, setTotalPages] = useState<number>(1)
 
 	useEffect(() => {
 		async function getMovies() {
-			const data = await movie.getAll(currentPage)
+			const data = await MOVIES_SERVICE.getAll(currentPage)
 			setMovies(data.items)
 			setTotalPages(data.totalPages)
 		}
@@ -26,8 +25,7 @@ function App() {
 	}
 
 	return (
-		<div className='p-10'>
-			<MovieHero />
+		<div>
 			<ul className='flex flex-wrap gap-5 mt-10'>
 				{movies.map(movie => (
 					<li key={movie.kinopoiskId}>
@@ -50,5 +48,3 @@ function App() {
 		</div>
 	)
 }
-
-export default App
