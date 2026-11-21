@@ -9,10 +9,11 @@ import {
 import { Link } from 'react-router-dom'
 
 interface MovieCardProps {
+	id: number | undefined
 	title: string | undefined
 	description: string | undefined
 	posterUrlPreview: string | undefined
-	ratingKinopoisk: number | undefined
+	ratingKinopoisk: number | undefined | null
 }
 
 export const MovieCard = ({

@@ -5,11 +5,7 @@ import { MovieService } from './movie.service'
 export class MovieController {
 	constructor(private readonly movieService: MovieService) {}
 
-	getMovies = async (
-		req: Request,
-		res: Response,
-		next: NextFunction,
-	): Promise<void> => {
+	getMovies = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
 			const page = parsePage(req.query.page)
 			const movies = await this.movieService.getMovies(page)
