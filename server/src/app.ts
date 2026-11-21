@@ -23,7 +23,7 @@ const movieController = new MovieController(movieService)
 
 app.use('/api/movies', createMovieRouter(movieController))
 
-app.use((_req, _res, next) => {
+app.use((_req,_res, next) => {
 	next(new AppError(404, ERROR_CODES.ROUTE_NOT_FOUND))
 })
 

@@ -6,8 +6,4 @@ export class MovieService {
 	async getMovies(page: number): Promise<unknown> {
 		return this.movieSource.getMovies(page)
 	}
-
-	async  getMovieById(id: number) {
-		return this.movieSource.getMovieById(id)
-	}
 }
