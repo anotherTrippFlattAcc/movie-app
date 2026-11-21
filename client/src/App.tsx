@@ -1,4 +1,5 @@
 import { MovieCard } from './components/blocks/movie/card'
+import { MovieHero } from './components/blocks/movie/hero'
 import { MoviesPagination } from './components/blocks/movie/pagination'
 import { movie } from './services/movie'
 import type { Movie } from './types/movie'
@@ -26,6 +27,7 @@ function App() {
 
 	return (
 		<div className='p-10'>
+			<MovieHero />
 			<ul className='flex flex-wrap gap-5 mt-10'>
 				{movies.map(movie => (
 					<li key={movie.kinopoiskId}>
