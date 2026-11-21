@@ -28,7 +28,7 @@ function App() {
     <ul className="flex flex-wrap gap-5 mt-10">
       {movies.map((movie) => (
           <li key={movie.kinopoiskId}>
-            <MovieCard title={movie.nameOriginal! || movie.nameRu!} description={movie.description!} posterUrlPreview={movie.posterUrlPreview}  />
+            <MovieCard  id={movie.kinopoiskId} title={movie.nameOriginal! || movie.nameRu!} description={movie.description!} posterUrlPreview={movie.posterUrlPreview} ratingKinopoisk={movie.ratingKinopoisk}  />
           </li>    
       ))}
     </ul> 

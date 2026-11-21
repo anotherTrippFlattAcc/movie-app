@@ -4,6 +4,9 @@ import { env } from './config/env'
 import { MovieService } from './modules/movies/movie.service'
 import { MovieController } from './modules/movies/movie.controller'
 import { createMovieRouter } from './modules/movies/movie.routes'
+import { errorHandler } from './middlewares/errorHandler'
+import { AppError } from './errors/AppError'
+import { ERROR_CODES } from './constants/errors'
 
 export const app = express()
 
@@ -19,3 +22,9 @@ const movieService = new MovieService(movieRepository)
 const movieController = new MovieController(movieService)
 
 app.use('/api/movies', createMovieRouter(movieController))
+
+app.use((_req,_res, next) => {
+	next(new AppError(404, ERROR_CODES.ROUTE_NOT_FOUND))
+})
+
+app.use(errorHandler)
