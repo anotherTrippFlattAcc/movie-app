@@ -23,3 +23,4 @@ export function errorHandler( error: unknown, req: Request, res: Response, next:
         }
     })
 }
+

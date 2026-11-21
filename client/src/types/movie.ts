@@ -12,7 +12,7 @@ export interface Movie {
   reviewsCount: number
   ratingGoodReview?: number | null
   ratingGoodReviewVoteCount?: number | null
-  ratingKinopoisk?: number | null
+  ratingKinopoisk?: number | null 
   ratingKinopoiskVoteCount?: number | null
   ratingImdb?: number | null
   ratingImdbVoteCount?: number | null
