@@ -8,11 +8,12 @@ function requireEnv(name: string): string {
 	return value
 }
 
-const moviesApiUrl = requireEnv('KINOPOISK_URL')
-new URL(moviesApiUrl)
+const moviesApiUrl = new URL(requireEnv('KINOPOISK_URL'))
+moviesApiUrl.pathname = moviesApiUrl.pathname.replace(/\/+$/, '').replace(/\/collections$/, '')
 
 export const env = {
-	moviesApiUrl,
+	moviesApiUrl: moviesApiUrl.href,
 	moviesApiKey: requireEnv('KINOPOISK_API_KEY'),
 	moviesApiTimeoutMs: 8_000,
+	databaseUrl: requireEnv('DATABASE_URL'),
 }

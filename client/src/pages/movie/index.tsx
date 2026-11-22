@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 export function MoviePage() {
-	const [movie, setMovie] = useState<MovieResponse>(null)
+	const [movie, setMovie] = useState<MovieResponse | null>(null)
 	const { id } = useParams()
 
 	useEffect(() => {

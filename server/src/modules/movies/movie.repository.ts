@@ -13,12 +13,12 @@ export class MovieRepository implements MovieSource {
 
 	async getMovies(page: number): Promise<unknown> {
 		const url = new URL(this.config.url)
+		url.pathname += '/collections'
 		url.searchParams.set('page', String(page))
 
 		const signal = AbortSignal.timeout(this.config.timeoutMs)
-		console.log(url)
 		try {
-			const response = await fetch(`${url}/collections?page=${page}`, {
+			const response = await fetch(url, {
 				method: 'GET',
 				headers: {
 					'X-API-KEY': this.config.apiKey,
@@ -52,11 +52,11 @@ export class MovieRepository implements MovieSource {
 
 	async getMovie(id: number): Promise<unknown> {
 		const url = new URL(this.config.url)
+		url.pathname += `/${id}`
 
 		const signal = AbortSignal.timeout(this.config.timeoutMs)
-		console.log(url)
 		try {
-			const response = await fetch(`${url}/${id}`, {
+			const response = await fetch(url, {
 				method: 'GET',
 				headers: {
 					'X-API-KEY': this.config.apiKey,

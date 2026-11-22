@@ -9,7 +9,7 @@ import {
 import { Link } from 'react-router-dom'
 
 interface MovieCardProps {
-	id: number | undefined
+	id: number
 	title: string | undefined
 	description: string | undefined
 	posterUrlPreview: string | undefined
@@ -17,13 +17,14 @@ interface MovieCardProps {
 }
 
 export const MovieCard = ({
+	id,
 	title,
 	description,
 	posterUrlPreview,
 	ratingKinopoisk,
 }: MovieCardProps) => {
 	return (
-		<Link to='/movie'>
+		<Link to={`/movie/${id}`}>
 			<Card className='relative hover:shadow-lg transition-all hover:scale-102 w-70 pt-0 cursor-pointer'>
 				<img
 					src={posterUrlPreview}

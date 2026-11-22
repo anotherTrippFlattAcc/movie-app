@@ -30,6 +30,7 @@ export function HomePage() {
 				{movies.map(movie => (
 					<li key={movie.kinopoiskId}>
 						<MovieCard
+							id={movie.kinopoiskId}
 							title={movie.nameOriginal! || movie.nameRu!}
 							description={movie.description!}
 							posterUrlPreview={movie.posterUrlPreview}
